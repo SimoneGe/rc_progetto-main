@@ -1,0 +1,39 @@
+<br><br>
+
+<h1>{{name}}</h1>
+<h3>{{lastName}}</h3><br>
+
+
+
+<h5>Questo è il tuo token : {{tweToken}}</h5>
+
+
+
+
+<p>Queste sono le tue cartoline</p>
+{{#if postcards}}
+    <table class="striped">
+        <thead>
+            <tr>
+                <th>Citta</th>
+                <th>Data</th>
+                <th>Photo</th>
+                <th>Autore</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each postcards}}
+            <tr>
+                <td><a href="/postcards/{{user}}"></a>{{city}}</td>
+                <td>{{giorno}}</td>
+                <td><img src={{foto}} style="width: 50%;"></td>
+                <td>{{firstName}}</td>
+                <td></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+{{else}}
+    <p>Non hai ancora creato alcuna cartolina</p>
+{{/if}}

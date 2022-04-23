@@ -1,0 +1,195 @@
+<html>
+
+    <head></head>
+<body>
+
+
+<h1>Manager</h1>
+<h6>Welcome {{name}}</h6>
+<!--Rimanda al profilo-->
+<form action="/profilo" action="GET">
+    <button type="submit">Profilo</button>
+</form>
+
+<p>Queste sono le tue cartoline</p>
+{{#if postcards}}
+    <table class="striped">
+        <thead>
+            <tr>
+                <th>Citta</th>
+                <th>Data</th>
+                <th>Photo</th>
+                <th>Autore</th>
+            </tr>    
+        </thead>
+        <tbody>
+            {{#each postcards}}
+            <tr>
+                <td><a href="/postcards/{{user}}"></a>{{city}}</td>
+                <td>{{giorno}}</td>
+                <td><img src={{foto}} style="width: 50%;"></td>
+                <td>{{firstName}}</td>
+                <!--<td><span class="dash-status">{{status}}</span></td>-->
+                <td></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+{{else}}
+    <p>Non hai ancora creato alcuna cartolina</p>
+{{/if}}
+
+<form action="/calendar/aggiungiEvento" method="post" style="border: black solid 10px">
+    <h2>Decidi quale evento aggiungere al Calendario </h2>
+    Luogo:
+    <input type="text" name="luogo" value="vienna" style="width: 20%;">
+    <br>
+    Data:<br>
+    <input type="text" name="dataCart" value="YYYY-MM-DD" style="width: 20%;">
+    <br><br>
+    <input type="submit" value="INVIA">
+
+
+
+
+</form>
+<br><br><br>
+<form action="/cartolina/elimina" method="post" style="border: black solid 10px">
+    <h2>Preferisci cancellare una cartolina </h2>
+    Luogo:
+    <input type="text" name="city" value="vienna" style="width: 20%;">
+    <br>
+    Data:<br>
+    <input type="text" name="giorno" value="YYYY-MM-DD" style="width: 20%;">
+    <br><br>
+    <input type="submit" value="INVIA">
+
+
+
+
+</form>
+<br><br><br>
+
+<form action="/calendar/creaCalendario" method="get" style="border: black solid 10px">
+    <input type="submit" value="CreaCalendario">
+
+</form>
+<br><br><br>
+
+
+
+<form action="/travel/locationInfo" method="post" style="border: black solid 10px">
+        <!--Partenza:<br>
+    <input type="text" name="partenza">
+    <br>-->
+    Destinazione:<br>
+    <input type="text" name="dest" value="london" style="width: 20%;">
+    <br>
+    <select name="quando" style="display: block;width:20%">
+        <option value=0>oggi</option>
+        <option value=1>domani</option>
+        <option value=2>dopo domani</option>
+        <option value=3>fra 3 giorni</option>
+        <option value=4>fra 4 giorni</option>
+    </select>
+    <br><br>
+    <input type="submit" value="INVIA">
+</form><br><br><br>
+
+{{#if viaggio}}
+    <h3>Ecco i tuoi risultati:</h3>
+    <h3>Hai scelto come meta: <strong>{{ city }}</strong></h3>
+    <h3>Per il giorno {{data}}</h3>
+    
+    <img class="img" src={{foto}} style="width: 50%;" ></img>
+    <table>
+        <tr>
+            <th>Temperatura</th>
+            <th>Pressione</th>
+            <th>Umidità</th>
+
+        </tr>
+        <tr>
+            <td>{{temperatura}}</td>
+            <td>{{pressione}}</td>
+            <td>{{umidità}}</td>
+        </tr>
+    </table>
+    
+    <h4>Condizioni: {{meteo}}</h4>
+
+    <h3>Le sue coordinate geografiche sono:  <br></h3>
+    <h3> Latitudine: {{lat}}<br>
+    Longitudine: {{long}}
+    </h3>
+    <h3>Ecco degli hotel : <br></h3>
+    
+    <br><br>
+    {{#if hotels}}
+    <table class="striped">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Rating</th>
+                <th>Contatto</th>
+                
+            </tr>    
+        </thead>
+        <tbody>
+            {{#each hotels}}
+            <tr>
+                <td>{{hotelName}}</td>
+                <td>{{hotelRating}}</td>
+                <td>{{hotelTelephone}}</td>
+               
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+{{else}}
+    <p>Non ho trovato alloggi</p>
+{{/if}}
+    
+
+
+
+    <br><br><br><br>
+<form action="/cartolina/aggiungi" method="post" style="border: black solid 10px;">
+    <h3>Vuoi salvare questi dati?</h3>
+    <input type="text" name="city" value={{city}} readonly style="width: 20%;"><br>
+    <img class="img" src={{foto}} style="width: 60%;" ></img>
+    <input type="text" name="fot" value={{foto}} readonly style="display:none;width: 20%"><br>
+    <input type="text" name="giorno"  readonly value={{data}} style="width: 20%;"><br> 
+    <input type="text" name="temperatura" value={{tempe}} style="width: 20%;"><br><br><br><br>
+    
+
+    <button type="submit">SALVA IL TUO VIAGGIO</button><br><br>
+</form>
+<br><br>
+
+
+
+
+
+
+{{/if}}
+
+
+
+
+
+
+
+
+
+
+
+
+<form action="http://localhost:8888/chat" method="get">
+    chatta con noi:
+    <button type="submit">chatta</button>
+</form>
+
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Chat</title>
+ 
+</head>
+<body>
+    <h2>Parla con gli sviluppatori</h2>
+    <h4>Caro  {{ utente }} ti risponderemo appena possibile.<h4>
+  
+        Scrivi qui il tuo messaggio: 
+        <input type="text" name="messaggio" id="mess">
+        <button type="submit" id="invia">Invia</button> 
+        <br> 
+        <div id="res_server"></div>
+   
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="./socket.io/socket.io.js"></script>    
+    <script>
+        var socket=io.connect("http://localhost:8000");
+
+        $('#invia').click(function(){
+            var mess=document.getElementById("mess").value;
+            socket.emit('message', mess );
+        });
+        
+        
+        socket.on('message', function(message){
+            //alert("Il server dice: "+message);
+            document.getElementById('res_server').innerHTML="";
+            var risposta='<p>'+message+'</p>';
+            document.getElementById('res_server').innerHTML=risposta;
+            //alert("end");
+            
+        });
+        
+    </script>
+
+</body>
+</html>

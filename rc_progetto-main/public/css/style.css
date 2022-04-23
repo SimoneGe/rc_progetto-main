@@ -1,0 +1,20 @@
+p {
+    margin: 10px 0 !important;
+}
+
+.login-container {
+    width: 800px;
+    margin-top: 50px;
+    text-align: center;
+}
+
+
+body {
+    background-color:cadetblue;
+    text-align: center;
+}
+
+ #id{
+     display: block;
+     border-color: black solid 5px;
+ }

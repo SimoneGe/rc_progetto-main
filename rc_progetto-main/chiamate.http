@@ -1,0 +1,20 @@
+###
+//MF API OK
+GET http://localhost:8888/mf?citta=milan&g=0
+
+### //TWE API OK
+POST http://localhost:8888/twe?citta=milan&g=2
+
+### //getPostcard OK
+GET http://localhost:8888/card?token=fke3hbrg2hpx86vxa1s3pm&luogo=milan&data=2021-06-11
+
+### //getPostcardByCity OK
+GET http://localhost:8888/cardsByCity?token=fke3hbrg2hpx86vxa1s3pm&luogo=milanu
+
+### //getAllPostcards OK
+GET http://localhost:8888/allCards?token=fke3hbrg2hpx86vxa1s3pm
+
+
+
+### 
+GET http://localhost:8888/api/deleteUser?token=owbo9xpozimssv4k4lllf
